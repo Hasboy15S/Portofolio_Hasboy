@@ -1,9 +1,19 @@
 import React from 'react'
 import './About.css'
-import Profil2 from '../../assets/Profil2.jpg'
+import Profil2 from '../../assets/Profil2.jpg';
 import ScrollFloat from './ScrollFloat';
 import ScrollReveal from './ScrollReveal';
 import { motion } from "framer-motion";
+import AM from '../../assets/AM.png';
+import ARDUINO from '../../assets/ARDUINO.png';
+import CSHAP from '../../assets/CSHAP.png';
+import CSS from '../../assets/CSS.png';
+import FIGMA from '../../assets/FIGMA.png';
+import HTML from '../../assets/HTML.png';
+import JAVASCRIPT from '../../assets/JAVASCRIPT.png';
+import PHP from '../../assets/PHP.png';
+import REACT from '../../assets/REACT.png';
+
 
 function About() {
     return (
@@ -47,10 +57,16 @@ function About() {
                     </ScrollReveal>
                 </div>
                 <div className="about-skills">
-                    <div className="about-skill"><p>HTML & CSS</p><hr style={{width: "60%"}}/></div>
-                    <div className="about-skill"><p>JavaScript</p><hr style={{width: "50%"}}/></div>
-                    <div className="about-skill"><p>PHP</p><hr style={{width: "80%"}}/></div>
-                    <div className="about-skill"><p>React Js</p><hr style={{width: "70%"}}/></div>  
+                    <div className="about-skill"><img src={AM} alt=""/></div>
+                    <div className="about-skill"><img src={ARDUINO} alt=""/></div>
+                    <div className="about-skill"><img src={CSHAP} alt=""/></div>
+                    <div className="about-skill"><img src={CSS} alt=""/></div>
+                    <div className="about-skill"><img src={FIGMA} alt=""/></div>
+                    <div className="about-skill"><img src={HTML} alt=""/></div>
+                    <div className="about-skill"><img src={JAVASCRIPT} alt=""/></div>
+                    <div className="about-skill"><img src={PHP} alt=""/></div>
+                    <div className="about-skill"><img src={REACT} alt=""/></div>
+                    
                 </div>
 
             </div>

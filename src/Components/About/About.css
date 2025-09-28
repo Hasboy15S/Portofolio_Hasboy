@@ -19,27 +19,12 @@
     gap: 50px;
 }
 .about-skills {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    width: 70%;
+    grid-template-columns: repeat(3,1fr);
     gap: 20px;
 }
-.about-skill {
-    display: flex;
-    align-items: center;
-    transition: 0.3s;
-}
-.about-skill p {
-    min-width: 150px;
-    font-weight: 500;
-}
-.about-skill hr {
-    outline: none;
-    border: none;
-    width: 50%;
-    height: 8px;
-    border-radius: 50px;
-    background-color: rgb(7, 197, 197);
-}
+
 .about-achivements {
     display: flex;
     width: 100%;
