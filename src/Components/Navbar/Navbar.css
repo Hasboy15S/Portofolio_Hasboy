@@ -1,0 +1,43 @@
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 150px;
+}
+.navmenu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 60px;
+    font-size: 15px
+}
+.navmenu a {
+    color: white;
+    text-decoration: none;
+}
+.navconect {
+    padding: 20px 40px;
+    background-color: rgb(7, 197, 197);
+    border: 20px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+.navconect a{
+    color: white;
+    text-decoration: none;
+}
+.navconect:hover {
+    scale: 1.1;
+}
+.logo {
+    display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.logo h1 {
+    font-size: 20px;
+    color: rgb(7, 197, 197);
+}
+.logo h2 {
+    font-size: 20px;
+}
