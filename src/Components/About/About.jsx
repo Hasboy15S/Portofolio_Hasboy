@@ -56,18 +56,28 @@ function About() {
                       experience.
                     </ScrollReveal>
                 </div>
+                <h1>Skill</h1>
+                <motion.div
+                initial={{ opacity: 0, y: 50 }}       // 🔹 posisi awal (belum terlihat)
+                whileInView={{ opacity: 1, y: 0 }}    // 🔹 animasi saat masuk viewport
+                exit={{ opacity: 0, y: 50 }}          // 🔹 animasi saat keluar viewport
+                transition={{ duration: 0.8, ease: "easeInOut" }} // 🔹 durasi + timing animasi
+                viewport={{ once: false, amount: 0.2 }}
+                className="about-leftt" // 🔹 animasi bisa bolak-balik (reverse)
+                >
                 <div className="about-skills">
-                    <div className="about-skill"><img src={AM} alt=""/></div>
-                    <div className="about-skill"><img src={ARDUINO} alt=""/></div>
-                    <div className="about-skill"><img src={CSHAP} alt=""/></div>
-                    <div className="about-skill"><img src={CSS} alt=""/></div>
-                    <div className="about-skill"><img src={FIGMA} alt=""/></div>
-                    <div className="about-skill"><img src={HTML} alt=""/></div>
-                    <div className="about-skill"><img src={JAVASCRIPT} alt=""/></div>
-                    <div className="about-skill"><img src={PHP} alt=""/></div>
-                    <div className="about-skill"><img src={REACT} alt=""/></div>
-                    
+                    <div className="about-skill cursor-target"><img src={AM} alt=""/></div>
+                    <div className="about-skill cursor-target"><img src={ARDUINO} alt=""/></div>
+                    <div className="about-skill cursor-target"><img src={CSHAP} alt=""/></div>
+                    <div className="about-skill cursor-target"><img src={CSS} alt=""/></div>
+                    <div className="about-skill cursor-target"><img src={FIGMA} alt=""/></div>
+                    <div className="about-skill cursor-target"><img src={HTML} alt=""/></div>
+                    <div className="about-skill cursor-target"><img src={JAVASCRIPT} alt=""/></div>
+                    <div className="about-skill cursor-target"><img src={PHP} alt=""/></div>
+                    <div className="about-skill cursor-target"><img src={REACT} alt=""/></div>
                 </div>
+                </motion.div>
+                
 
             </div>
         </div>
@@ -76,27 +86,17 @@ function About() {
                 <h1>5+</h1>
                 <p>EXPERIENCE</p>
             </div>
-            <hr />
+            <hr/>
             <div className="about-achivement">
                 <h1>5+</h1>
                 <p>PROJECT EXPERIENCE</p>
             </div>
-            <hr />
+            <hr/>
             <div className="about-achivement">
                 <h1>5+</h1>
                 <p>ORGANIZATION EXPERIENCE</p>
             </div>
         </div>
-         <motion.div
-        initial={{ opacity: 0, y: 50 }}       // 🔹 posisi awal (belum terlihat)
-        whileInView={{ opacity: 1, y: 0 }}    // 🔹 animasi saat masuk viewport
-        exit={{ opacity: 0, y: 50 }}          // 🔹 animasi saat keluar viewport
-        transition={{ duration: 0.8, ease: "easeInOut" }} // 🔹 durasi + timing animasi
-        viewport={{ once: false, amount: 0.2 }} // 🔹 animasi bisa bolak-balik (reverse)
-      >
-        <h1>About Section</h1>
-        <p>Dengan Framer Motion, animasi bisa auto reverse 🔄</p>
-      </motion.div>
     </div>
   )
 }

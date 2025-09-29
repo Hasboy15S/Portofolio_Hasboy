@@ -55,3 +55,9 @@
   border-right: none;
   border-top: none;
 }
+@media only screen and (max-width: 900px) {
+  .target-cursor-wrapper,.target-cursor-dot
+  ,.target-cursor-corner,.corner-bl,.corner-br,.corner-tl,.corner-tr {
+    display: none;
+  }
+}

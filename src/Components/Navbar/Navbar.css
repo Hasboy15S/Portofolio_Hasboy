@@ -5,6 +5,11 @@
     justify-content: space-between;
     margin: 15px 150px;
 }
+.navbar img {
+    width: 20px;
+    height: 20px;
+    display: none;
+}
 .navmenu {
     display: flex;
     align-items: center;
@@ -17,7 +22,8 @@
     text-decoration: none;
 }
 .navconect {
-    padding: 20px 40px;
+    display: block;
+    padding: 10px 20px;
     background-color: rgb(7, 197, 197);
     border: 20px;
     border-radius: 50px;
@@ -40,4 +46,49 @@
 }
 .logo h2 {
     font-size: 20px;
+}
+@media only screen and (max-width: 1100px) {
+    .navconect {
+        display: none;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .navbar {
+        margin: 20px 50px;
+    }
+    .navbar img {
+        display: block;
+    }
+    .nav-mob-open {
+        display: block;
+        position: fixed;
+        right: 30px;
+
+    }
+    .nav-mob-close {
+        display: block;
+        position: relative;
+        top: 30px;
+        left: 290px;
+        width: 30px;
+    }
+    .navmenu {
+        position: fixed;
+        flex-direction: column;
+        align-items: center;
+        top: 0;
+        gap: 30px;
+        background-color: #1F0016;
+        width: 350px;
+        height: 100%;
+        z-index: 2;
+        transition: right 0.5s;
+        right: -350px;
+    }
+    .navmenu li {
+        font-size: 30px;
+        padding-left: 100px;
+        flex-direction: row;
+        gap: 20px;
+    }
 }
