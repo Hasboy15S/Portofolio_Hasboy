@@ -11,6 +11,9 @@
 .Hero img {
     width: 300px;
 }
+.Hero .img2 {
+    display: none;
+}
 .txt {
     display: flex;
     align-items: center;
@@ -24,4 +27,17 @@
 .name {
     font-size: 50px;
     font-weight: bold;
+}
+@media only screen and (max-width: 900px) {
+    .txt {
+        text-align: center;
+    }
+    .Hero .img1 {
+        display: none;
+    }
+    .Hero .img2 {
+        display: block;
+        justify-self: center;
+        
+    }
 }

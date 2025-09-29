@@ -3,6 +3,9 @@ import Navbar from './Components/Navbar/Navbar'
 import Hero from './Components/Hero/Hero'
 import About from './Components/About/About'
 import TargetCursor from './TargetCursor';
+import Experience from './Components/Experience/Experience';
+import Portofolio from './Components/Portofolio/Portofolio';
+import Contact from './Components/Contact/Contact';
 import './App.css'
 const App = () => {
   return (
@@ -14,9 +17,12 @@ const App = () => {
       />
       <Navbar/>
     <Hero/>
-    <About/>
+    <About/>  
+    <Experience/>
+    <Portofolio/>
+
+    <Contact/>
     </div>
-    
     </>
   )
 }

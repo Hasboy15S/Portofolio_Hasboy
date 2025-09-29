@@ -13,11 +13,12 @@ import HTML from '../../assets/HTML.png';
 import JAVASCRIPT from '../../assets/JAVASCRIPT.png';
 import PHP from '../../assets/PHP.png';
 import REACT from '../../assets/REACT.png';
+import PixelCard from './PixelCard';
 
 
 function About() {
     return (
-    <div className='about' id='abt'>
+    <div className='about' id='about'>
         <div className="about-title">
             <ScrollFloat
             animationDuration={1}
@@ -38,7 +39,11 @@ function About() {
         viewport={{ once: false, amount: 0.2 }}
         className="about-leftt" // 🔹 animasi bisa bolak-balik (reverse)
       >
-        <img src={Profil2} alt=""/>
+        <PixelCard variant="yellow" >
+        <img src={Profil2} alt="" className='img'/>
+        </PixelCard>
+
+        
       </motion.div>
             <div className="about-right">
                 <div className="about-para">

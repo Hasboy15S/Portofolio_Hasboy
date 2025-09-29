@@ -8,9 +8,10 @@
 }
 .about-section {
     display: flex;
+    gap: 40px;
 }
-.about-leftt img {
-    width: 70%;
+.about-leftt .img {
+    position: absolute;
 }
 .about-right {
     margin-top: -10px;
@@ -50,9 +51,9 @@
     color: rgb(108, 238, 255);
 }
 .about-achivements hr {
-    width: 5px;
-    height: max-content;
-    background-color: white;
+    width: 1px;
+    height: 100px;
+    background-color: rgb(0, 147, 192);
 }
 .about-skill {
     padding: 10px;

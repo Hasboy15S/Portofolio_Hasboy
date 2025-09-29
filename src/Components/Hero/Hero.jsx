@@ -8,7 +8,7 @@ const handleAnimationComplete = () => {
 };
 function Hero() {
   return (
-    <div className='home'>
+    <div id='home' className='home'>
         <div className='Hero'>
             <AnimatedContent
             distance={70}
@@ -22,10 +22,12 @@ function Hero() {
             threshold={0.2}
             delay={0.3}
             >
-            <div><img src={Profil} alt="" /></div>
+            <div className='img1'><img src={Profil} alt="" /></div>
             </AnimatedContent>
             <div className='txt'>
+                
                 <div className="text">
+                  <div className='img2'><img src={Profil} alt="" /></div>
                     <SplitText
                     text="Hello, MyName Is Hasbi!"
                     className="name"

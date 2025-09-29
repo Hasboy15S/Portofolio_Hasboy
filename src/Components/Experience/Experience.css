@@ -1,0 +1,22 @@
+.experiences {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.experience {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.experience-item {
+    display: flex;
+    align-items: center;
+}
+.experience-item h1 {
+    font-size: 40px;
+    font-weight: 600;
+}
+.experience-item img {
+    width: 700px;
+}

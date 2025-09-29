@@ -58,6 +58,8 @@
     }
     .navbar img {
         display: block;
+        width: 50px;
+    height: 50px;
     }
     .nav-mob-open {
         display: block;
@@ -68,22 +70,22 @@
     .nav-mob-close {
         display: block;
         position: relative;
-        top: 30px;
-        left: 290px;
-        width: 30px;
+        top: 20px;
+        right: 100px;
     }
     .navmenu {
         position: fixed;
+        padding-right: 100px;
         flex-direction: column;
         align-items: center;
         top: 0;
         gap: 30px;
         background-color: #1F0016;
-        width: 350px;
+        width: 400px;
         height: 100%;
         z-index: 2;
         transition: right 0.5s;
-        right: -350px;
+    
     }
     .navmenu li {
         font-size: 30px;

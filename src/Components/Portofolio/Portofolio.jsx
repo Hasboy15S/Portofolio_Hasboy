@@ -1,0 +1,49 @@
+import React from 'react'
+import './Portofolio.css'
+import CardSwap, { Card } from './CardSwap'
+import Tictac from '../../assets/Tictac.png'
+import Astrix from '../../assets/Astrix.png'
+import Hasbooy from '../../assets/HASBOYTECH.png'
+import ScrollFloat from './ScrollFloat';
+const Portofolio = () => {
+  return (
+    <div id='portofolio' className='Portofolio' style={{ height: '700px', position: 'relative' }}>
+      <div className="tekss">
+        <ScrollFloat
+          animationDuration={1}
+          ease='back.inOut(2)'
+          scrollStart='center bottom+=50%'
+          scrollEnd='bottom bottom-=40%'
+          stagger={0.02}
+          >            
+          Portofolio
+          
+         </ScrollFloat>
+         <p>This is my portfolio, which showcases my experiences, achievements, and works as a representation of my skills.</p>
+         <a href="https://github.com/Hasboy15S">Github</a>
+      </div>
+        
+        <div className="cardswapp">
+           <CardSwap
+            cardDistance={60}
+            verticalDistance={70}
+            delay={5000}
+            pauseOnHover={false}
+            >
+            <Card>
+            <img src={Tictac} alt="" />
+            </Card>
+            <Card>
+            <img src={Astrix} alt="" />
+            </Card>
+            <Card>
+            <img src={Hasbooy} alt="" />
+            </Card>
+        </CardSwap> 
+        </div>
+  
+</div>
+  )
+}
+
+export default Portofolio

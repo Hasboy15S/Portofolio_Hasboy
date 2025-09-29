@@ -1,0 +1,22 @@
+.Portofolio p {
+    width: 600px;
+    font-size: 20px;
+}
+.cardswapp img {
+    height: 400px;
+    justify-self: center;
+    display: flex;
+}
+.Portofolio a {
+    font-size: 15px;
+    padding: 5px 10px;
+    background-color: aqua;
+    border-radius: 20px;
+    color: black;
+
+}
+.tekss {
+    position: relative;
+    margin-left: 150px;
+    top: 200px;
+}
