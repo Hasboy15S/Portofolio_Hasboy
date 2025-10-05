@@ -13,10 +13,23 @@
     display: flex;
     align-items: center;
 }
-.experience-item h1 {
+.teks h1 {
     font-size: 40px;
     font-weight: 600;
 }
 .experience-item img {
     width: 700px;
+}
+@media only screen and (max-width: 900px) {
+    .experience-item {
+        flex-direction: column;
+    }
+    .experience-item img {
+        width: 600px;
+    }
+    .teks {
+    font-size: 20px;
+    font-weight: 600;
+    align-items: center;
+    }
 }
