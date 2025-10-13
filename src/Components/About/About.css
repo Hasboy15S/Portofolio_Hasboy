@@ -1,3 +1,11 @@
+.tes {
+    display: block;
+}
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .about {
     display: flex;
     flex-direction: column;
@@ -10,8 +18,16 @@
     display: flex;
     gap: 40px;
 }
+.about-leftt {
+    border-radius: 25px;
+    height: 470px;
+  width: 370px;
+}
 .about-leftt .img {
     position: absolute;
+}
+.about-leftt:hover {
+    box-shadow: 0 0 10px cyan;
 }
 .about-right {
     margin-top: -10px;
@@ -25,10 +41,10 @@
     width: min-content;
 }
 .about-right h1 {
-    font-size: 20px;
+    font-size: 30px;
     color: rgb(108, 238, 255);
     font-weight:600;
-    margin-top: -20px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -43,12 +59,16 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    transition: 0.5s
+    transition: 0.5s;
+    padding: 0 10px;
 }
 .about-achivement h1{
     font-size: 40px;
     font-weight: 600;
     color: rgb(108, 238, 255);
+}
+.about-achivement p {
+    font-weight: 500;
 }
 .about-achivements hr {
     width: 1px;
@@ -60,7 +80,7 @@
     width: max-content;
     background-color: rgb(34, 34, 34);
     border-radius: 20px;
-    box-shadow: 0px 4px 6px rgb(88, 88, 88);
+    box-shadow: 0px 3px 2px rgb(60, 60, 60);
 }
 .about-skill img {
     width: 50px;
@@ -69,4 +89,47 @@
 .about-skill:hover {
     scale: 1.1;
     transition:  ease-in-out 0.5s;
+}
+.about-skil {
+    display: block;
+}
+.imgabt {
+    display: none;
+}
+@media only screen and (max-width: 900px){
+    .about-leftt{
+        display: none;
+    }
+    .imgabt {
+        display: block;
+    }
+    .imgabt img {
+        display: flex;
+        justify-self: center;
+        border-radius: 30px;
+        height: 470px; 
+        width: 370px;
+        box-shadow: 7px 7px 2px rgb(42, 42, 42);
+    }
+    .about-skil {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .about-skills {
+        grid-template-columns: repeat(3,1fr);
+    }
+    .about-skill {
+        padding: 20px;
+    }
+    .about-achivements {
+        justify-content: center;
+    }
+    .about-achivement h1 {
+        font-size: 30px;
+    }
+    .about-achivement p {
+        text-align: center;
+    }
+
 }
