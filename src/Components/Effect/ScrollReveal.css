@@ -1,0 +1,17 @@
+.scroll-reveal {
+  margin: 10px 0;
+
+}
+.scroll-reveal-text {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.word {
+  display: inline-block;
+}
+@media only screen and (max-width: 900px) {
+  .scroll-reveal-text {
+    text-align: center;
+  }
+}

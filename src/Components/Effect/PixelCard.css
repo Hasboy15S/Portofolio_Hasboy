@@ -13,7 +13,7 @@
   display: grid;
   place-items: center;
   aspect-ratio: 4 / 5;
-  border: 2px solid #00aad4;
+  box-shadow: 0 5px 4px rgb(78, 78, 78);
   border-radius: 25px;
   isolation: isolate;
   transition: border-color 200ms cubic-bezier(0.5, 1, 0.89, 1);

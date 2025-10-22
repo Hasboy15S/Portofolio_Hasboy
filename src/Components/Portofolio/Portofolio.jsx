@@ -1,10 +1,10 @@
 import React from 'react'
 import './Portofolio.css'
-import CardSwap, { Card } from './CardSwap'
+import CardSwap, { Card } from '../Effect/CardSwap'
 import Tictac from '../../assets/Tictac.png'
 import Astrix from '../../assets/Astrix.png'
 import Hasbooy from '../../assets/HASBOYTECH.png'
-import ScrollFloat from './ScrollFloat';
+import ScrollFloat from '../Effect/ScrollFloat';
 const Portofolio = () => {
   return (
     <div id='portofolio' className='Portofolio' style={{ height: '700px', position: 'relative' }}>

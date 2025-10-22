@@ -1,8 +1,8 @@
 import React from 'react'
 import './Hero.css'
 import Profil from '../../assets/Profil.png'
-import SplitText from "./SplitText";
-import AnimatedContent from './AnimatedContent'
+import SplitText from "../Effect/SplitText";
+import AnimatedContent from '../Effect/AnimatedContent'
 const handleAnimationComplete = () => {
   console.log('All letters have animated!');
 };
@@ -39,7 +39,7 @@ function Hero() {
                     to={{ opacity: 1, y: 0 }}
                     threshold={0.1}
                     rootMargin="-100px"
-                    textAlign="center"
+                    textAlign="none"
                     onLetterAnimationComplete={handleAnimationComplete}
                     />
                     <h2>Im a <span>Junior Web Developer</span></h2>

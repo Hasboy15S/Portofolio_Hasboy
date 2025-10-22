@@ -40,7 +40,7 @@ const ScrollReveal = ({
 
     gsap.fromTo(
       el,
-      { transformOrigin: '0% 50%', rotate: baseRotation },
+      { transformOrigin: '0% 70%', rotate: baseRotation },
       {
         ease: 'none',
         rotate: 0,
