@@ -10,31 +10,40 @@
     flex-direction: column;
 }
 .experience-item {
-    margin-bottom: 100px;
+    margin-bottom: 40px;
+    justify-content: center;
     display: flex;
     align-items: center;
-    background-color: rgb(57, 57, 57);
     border-radius: 20px;
-    padding: 10px;
-    box-shadow: 0 10px 15px rgb(53, 53, 53);
+    box-shadow: 0 10px 5px rgb(33, 33, 33);
+    background-color: rgb(39, 39, 39);
+    padding: 10px 5px;
+}
+.teks {
+    width: 35%;
 }
 .teks h1 {
     font-size: 40px;
     font-weight: 600;
 }
 .experience-item img {
-    width: 700px;
+    width: 50%;
 }
 @media only screen and (max-width: 900px) {
     .experience-item {
         flex-direction: column;
+        padding:  20px 15px;
     }
     .experience-item img {
-        width: 600px;
+        width: 100%;
     }
     .teks {
     font-size: 20px;
     font-weight: 600;
     align-items: center;
+    width: 80%;
+    }
+    .teks p {
+        font-size: 20px;
     }
 }
