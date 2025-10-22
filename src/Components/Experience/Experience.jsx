@@ -7,7 +7,17 @@ import { motion } from "framer-motion";
 function Experience() {
   return (
     <div id='experience' className='experiences'>
-      <ScrollFloat
+      <motion.div
+                  animate={{
+                      y: [0,-10,0]
+                  }}
+                  transition={{
+                      duration: 1.5,
+                      ease: "easeInOut",
+                      repeat: Infinity,
+                  }}
+                  >
+                  <ScrollFloat
           animationDuration={1}
           ease='back.inOut(2)'
           scrollStart='center bottom+=50%'
@@ -15,7 +25,9 @@ function Experience() {
           stagger={0.02}
           >            
           Experience
-         </ScrollFloat>  <div className="experience">
+         </ScrollFloat>    
+                  </motion.div>
+      <div className="experience">
          <motion.div
           initial={{ opacity: 0, y: 50 }}       // 🔹 posisi awal (belum terlihat)
           whileInView={{ opacity: 1, y: 0 }}    // 🔹 animasi saat masuk viewport
@@ -24,6 +36,13 @@ function Experience() {
           viewport={{ once: false, amount: 0.2 }}// 🔹 animasi bisa bolak-balik (reverse)
           >
         
+        <div className="experience-item">
+          <img src={Pramuka} alt="" />
+          <div className="teks">
+            <h1>Leadership</h1>
+          <p>I have organizational experience in the Scouts, where I actively participated in various activities, teamwork, and leadership training. This helped me develop responsibility, discipline, and strong collaboration skills.</p>
+          </div>
+        </div>
         <div className="experience-item">
           <img src={Pramuka} alt="" />
           <div className="teks">

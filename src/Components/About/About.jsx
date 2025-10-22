@@ -3,7 +3,7 @@ import './About.css'
 import Profil2 from '../../assets/Profil2.jpg';
 import ScrollFloat from '../Effect/ScrollFloat';
 import ScrollReveal from '../Effect/ScrollReveal';
-import { motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 import AM from '../../assets/AM.png';
 import ARDUINO from '../../assets/ARDUINO.png';
 import CSHAP from '../../assets/CSHAP.png';
@@ -21,7 +21,17 @@ function About() {
     return (
     <div className='tes'>
         <div className='title'>
-            <ScrollFloat
+            <motion.div
+            animate={{
+                y: [0,-10,0]
+            }}
+            transition={{
+                duration: 1.5,
+                ease: "easeInOut",
+                repeat: Infinity,
+            }}
+            >
+                <ScrollFloat
             animationDuration={1}
             ease='back.inOut(2)'
             scrollStart='center bottom+=50%'
@@ -30,6 +40,8 @@ function About() {
             >
             AboutMe?
             </ScrollFloat>
+            </motion.div>
+            
         </div>
         
         <div className='about' id='about'>
@@ -40,7 +52,7 @@ function About() {
         whileInView={{ opacity: 1, y: 0 }}    // 🔹 animasi saat masuk viewport
         exit={{ opacity: 0, y: 50 }}          // 🔹 animasi saat keluar viewport
         transition={{ duration: 0.8, ease: "easeInOut" }} // 🔹 durasi + timing animasi
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.2 }}
         className="about-leftt" // 🔹 animasi bisa bolak-balik (reverse)
         >
         <PixelCard variant="yellow" >
@@ -80,11 +92,12 @@ function About() {
                 whileInView={{ opacity: 1, y: 0 }}    // 🔹 animasi saat masuk viewport
                 exit={{ opacity: 0, y: 50 }}          // 🔹 animasi saat keluar viewport
                 transition={{ duration: 0.8, ease: "easeInOut" }} // 🔹 durasi + timing animasi
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.2 }}
                 className="about-skil" // 🔹 animasi bisa bolak-balik (reverse)
                 >
                 <h1>My-Skills?</h1>
                 <div className="about-skills">
+                    
                     <div className="about-skill cursor-target"><img src={AM} alt=""/></div>
                     <div className="about-skill cursor-target"><img src={ARDUINO} alt=""/></div>
                     <div className="about-skill cursor-target"><img src={CSHAP} alt=""/></div>

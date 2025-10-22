@@ -1,6 +1,7 @@
 .tes {
     display: block;
 }
+
 .title {
     width: 100%;
     display: flex;
@@ -12,11 +13,16 @@
     align-items: center;
     justify-content: center;
     gap: 80px;
-    margin: 100px 170px;
 }
 .about-section {
+    margin-top: 20px;
+    width: 80%;
     display: flex;
     gap: 40px;
+    background-color: rgb(39, 39, 39);
+    padding: 30px 70px;
+    border-radius: 20px;
+    box-shadow: 0 10px 5px rgb(33, 33, 33);
 }
 .about-leftt {
     border-radius: 25px;
@@ -26,9 +32,7 @@
 .about-leftt .img {
     position: absolute;
 }
-.about-leftt:hover {
-    box-shadow: 0 0 10px cyan;
-}
+
 .about-right {
     margin-top: -10px;
     display: flex;
@@ -50,17 +54,21 @@
 
 .about-achivements {
     display: flex;
-    width: 100%;
+    width: 60%;
     justify-content: space-around;
     margin-bottom: 80px;
+    border-radius: 20px;
+    box-shadow: 0 10px 5px rgb(33, 33, 33);
+    background-color: rgb(39, 39, 39);
+    padding: 10px 20px;
 }
 .about-achivement {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    text-shadow: 2px 2px 4px rgb(85, 85, 85);
     transition: 0.5s;
-    padding: 0 10px;
+    padding-bottom: 10px;
 }
 .about-achivement h1{
     font-size: 40px;
@@ -71,9 +79,14 @@
     font-weight: 500;
 }
 .about-achivements hr {
-    width: 1px;
-    height: 100px;
-    background-color: rgb(0, 147, 192);
+    width: 4px;
+    border-radius: 20px;
+    height:50px;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    background-color: rgb(6, 191, 248);
+    box-shadow: 0 4px 7px rgb(171, 171, 171);
 }
 .about-skill {
     padding: 10px;
@@ -88,13 +101,25 @@
 }
 .about-skill:hover {
     scale: 1.1;
-    transition:  ease-in-out 0.5s;
+    transition:  ease-in-out 0.2s;
 }
 .about-skil {
     display: block;
 }
 .imgabt {
     display: none;
+}
+.animate-float {
+  animation: float 2s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+    
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 @media only screen and (max-width: 900px){
     .about-leftt{
