@@ -37,3 +37,9 @@
 .pixel-card:focus-within::before {
   opacity: 1;
 }
+@media only screen and (max-width: 900px) { 
+  .pixel-card {
+  height: 370px;
+  width: 270px;
+  }
+}

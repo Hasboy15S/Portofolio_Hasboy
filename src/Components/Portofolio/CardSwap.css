@@ -20,13 +20,13 @@
   -webkit-backface-visibility: hidden;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1300px) {
   .card-swap-container {
     transform: scale(0.75) translate(25%, 25%);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 900px) {
   .card-swap-container {
     transform: scale(0.55) translate(25%, 25%);
   }

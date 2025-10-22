@@ -27,7 +27,7 @@ const Portofolio = () => {
            <CardSwap
             cardDistance={60}
             verticalDistance={70}
-            delay={5000}
+            delay={3000}
             pauseOnHover={false}
             >
             <Card>
