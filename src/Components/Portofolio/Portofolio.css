@@ -1,6 +1,7 @@
 .Portofolio p {
     width: 600px;
     font-size: 20px;
+    margin-bottom: 20px;
 }
 .cardswapp img {
     height: 400px;
@@ -13,7 +14,6 @@
     background-color: aqua;
     border-radius: 20px;
     color: black;
-
 }
 .tekss {
     position: relative;

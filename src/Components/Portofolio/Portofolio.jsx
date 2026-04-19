@@ -65,7 +65,7 @@ const Portofolio = () => {
           
          </ScrollFloat>
          <p>This is my portfolio, which showcases my experiences, achievements, and works as a representation of my skills.</p>
-         <a href="https://github.com/Hasboy15S">Github</a>
+         <a className='cursor-target' href="https://github.com/Hasboy15S">Github</a>
       </div>
         
         <div className="cardswapp">
