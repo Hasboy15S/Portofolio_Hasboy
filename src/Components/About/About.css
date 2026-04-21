@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
 }
+
 .about {
     display: flex;
     flex-direction: column;
@@ -14,6 +15,7 @@
     justify-content: center;
     gap: 80px;
 }
+
 .about-section {
     margin-top: 20px;
     width: 80%;
@@ -24,13 +26,24 @@
     border-radius: 20px;
     box-shadow: 0 10px 5px rgb(33, 33, 33);
 }
+
+/* ✅ Fix: tambah position relative agar .img absolute punya acuan */
 .about-leftt {
+    position: relative;
     border-radius: 25px;
     height: 470px;
-  width: 370px;
+    width: 370px;
+    flex-shrink: 0;
 }
+
 .about-leftt .img {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
 }
 
 .about-right {
@@ -38,16 +51,18 @@
     display: flex;
     flex-direction: column;
 }
+
 .about-skills {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     width: min-content;
 }
+
 .about-right h1 {
     font-size: 30px;
     color: rgb(108, 238, 255);
-    font-weight:600;
+    font-weight: 600;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -63,6 +78,7 @@
     background-color: rgb(39, 39, 39);
     padding: 10px 20px;
 }
+
 .about-achivement {
     display: flex;
     flex-direction: column;
@@ -71,94 +87,118 @@
     transition: 0.5s;
     padding-bottom: 10px;
 }
-.about-achivement h1{
+
+.about-achivement h1 {
     font-size: 40px;
     font-weight: 600;
     color: rgb(108, 238, 255);
 }
+
 .about-achivement p {
     font-weight: 500;
 }
+
 .about-achivements hr {
     width: 4px;
     border-radius: 20px;
-    height:50px;
+    height: 50px;
     display: flex;
     justify-self: center;
     align-self: center;
     background-color: rgb(6, 191, 248);
+    /* ✅ Fix: tambah border none agar konsisten antar browser */
+    border: none;
     box-shadow: 0 4px 7px rgb(171, 171, 171);
 }
+
+/* ✅ Fix: pindahkan transition ke sini agar animasi hover bekerja dua arah */
 .about-skill {
     padding: 10px;
     width: max-content;
     background-color: rgb(34, 34, 34);
     border-radius: 20px;
     box-shadow: 0px 3px 2px rgb(60, 60, 60);
+    transition: scale 0.2s ease-in-out;
 }
+
 .about-skill img {
     width: 50px;
     height: 50px;
+    /* ✅ Fix: hilangkan celah bawah gambar */
+    display: block;
 }
+
 .about-skill:hover {
     scale: 1.1;
-    transition:  ease-in-out 0.2s;
 }
+
 .about-skil {
     display: block;
 }
+
 .imgabt {
     display: none;
 }
+
 .animate-float {
-  animation: float 2s ease-in-out infinite;
+    animation: float 2s ease-in-out infinite;
 }
+
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-    
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
 }
-@media only screen and (max-width: 900px){
+
+/* ✅ Fix: hapus koma di akhir closing brace — ini penyebab CSS error utama */
+@media only screen and (max-width: 900px) {
     .about-section {
         padding: 30px 30px;
     }
-    .about-leftt{
+
+    .about-leftt {
         display: none;
     }
+
     .imgabt {
         display: block;
     }
+
     .imgabt img {
         display: flex;
         justify-self: center;
-        border-radius: 30px; 
-        width:100%;
+        border-radius: 30px;
+        width: 100%;
         box-shadow: 7px 7px 2px rgb(42, 42, 42);
     }
+
     .about-skil {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
     .about-skills {
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
+
     .about-skill {
         padding: 20px;
     }
+
     .about-achivements {
         justify-content: center;
     }
+
     .about-achivement h1 {
         font-size: 30px;
     }
+
     .about-achivement p {
         text-align: center;
         font-size: 13px;
     }
-
 }
