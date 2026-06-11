@@ -60,11 +60,11 @@ export default function Navbar() {
 
       <nav
         className={`
-          fixed z-40 transition-all duration-500 ease-in-out backdrop-blur-xl
+          fixed z-40 transition-all duration-500 ease-in-out backdrop-blur-xl border-white/25
           ${scrolled
             ? `top-3 left-4 right-4 md:left-8 md:right-8 lg:left-16 lg:right-16 rounded-2xl border shadow-2xl ${
                 dark 
-                  ? 'border-white/10 bg-black/40 shadow-black/40' 
+                  ? 'border-white/20 bg-black/40 shadow-black/40' 
                   : 'border-cyan-200/60 bg-cyan-50/70 shadow-cyan-900/10'
               }`
             : `top-0 left-0 right-0 rounded-none border-b ${
@@ -121,21 +121,28 @@ export default function Navbar() {
 
           {/* Right */}
           <div className="flex items-center gap-1 shrink-0">
+            
+            {/* Modern Theme Switch Toggle (Desktop) */}
             <button
               onClick={() => setDark(!dark)}
               aria-label="Toggle theme"
-              className={`hidden sm:flex items-center justify-center w-8 h-8 rounded transition-colors duration-150 text-sm ${
-                dark ? 'text-white/40 hover:text-white/80 hover:bg-white/5' : 'text-slate-400 hover:text-slate-800 hover:bg-slate-200/50'
-              }`}
+              className={`
+                hidden sm:flex relative items-center w-[52px] h-7 rounded-full transition-all duration-300 mr-3 outline-none overflow-hidden
+                ${dark ? 'bg-[#151515] border border-cyan-500/50 shadow-inner shadow-black' : 'bg-cyan-100 border border-cyan-200 shadow-inner'}
+              `}
             >
-              {dark ? '☀️' : '🌙'}
+              {/* Ikon Background Switch */}
+              <span className={`absolute left-1.5 text-[11px] transition-opacity duration-300 ${dark ? 'opacity-0' : 'opacity-100'}`}>☀️</span>
+              <span className={`absolute right-1.5 text-[11px] transition-opacity duration-300 ${dark ? 'opacity-100' : 'opacity-0'}`}>🌙</span>
+              
+              {/* Bulatan (Thumb) yang geser */}
+              <span
+                className={`
+                  absolute w-5 h-5 rounded-full bg-white transition-transform duration-300 z-10
+                  ${dark ? 'translate-x-[26px] shadow-[0_0_8px_#06b6d4]' : 'translate-x-1 shadow-md'}
+                `}
+              />
             </button>
-
-            <div className="hidden sm:flex items-center text-[13px] font-bold mr-2">
-              <button className="px-2 py-1 text-cyan-500 hover:text-cyan-400 transition-colors duration-150">EN</button>
-              <span className={`text-[11px] ${dark ? 'text-white/20' : 'text-slate-300'}`}>|</span>
-              <button className={`px-2 py-1 transition-colors duration-150 ${dark ? 'text-white/40 hover:text-white/80' : 'text-slate-500 hover:text-slate-800'}`}>ID</button>
-            </div>
 
             <a
               href="#contact"
@@ -200,23 +207,33 @@ export default function Navbar() {
             })}
             
             {/* Divider */}
-            <div className={`my-2 h-[1px] w-full ${dark ? 'bg-white/5' : 'bg-slate-200'}`} />
+            <div className={`my-3 h-[1px] w-full ${dark ? 'bg-white/10' : 'bg-cyan-900/10'}`} />
 
-            <li className="flex items-center justify-between px-2">
-              <div className="flex items-center gap-2">
-                <button onClick={() => setDark(!dark)} className={`w-10 h-10 flex items-center justify-center rounded-full ${dark ? 'bg-white/5 text-white/40' : 'bg-slate-100 text-slate-500'}`}>
-                  {dark ? '☀️' : '🌙'}
-                </button>
-                <div className="flex items-center font-bold text-[13px]">
-                   <span className="text-cyan-500 px-2">EN</span>
-                   <span className="opacity-20">|</span>
-                   <span className={`px-2 ${dark ? 'text-white/40' : 'text-slate-400'}`}>ID</span>
-                </div>
-              </div>
+            <li className="flex items-center justify-between px-2 pt-1 pb-2">
+              
+              {/* Modern Theme Switch Toggle (Mobile) */}
+              <button
+                onClick={() => setDark(!dark)}
+                aria-label="Toggle theme"
+                className={`
+                  relative flex items-center w-[52px] h-7 rounded-full transition-all duration-300 outline-none overflow-hidden
+                  ${dark ? 'bg-[#151515] border border-cyan-500/50 shadow-inner shadow-black' : 'bg-cyan-100 border border-cyan-200 shadow-inner'}
+                `}
+              >
+                <span className={`absolute left-1.5 text-[11px] transition-opacity duration-300 ${dark ? 'opacity-0' : 'opacity-100'}`}>☀️</span>
+                <span className={`absolute right-1.5 text-[11px] transition-opacity duration-300 ${dark ? 'opacity-100' : 'opacity-0'}`}>🌙</span>
+                <span
+                  className={`
+                    absolute w-5 h-5 rounded-full bg-white transition-transform duration-300 z-10
+                    ${dark ? 'translate-x-[26px] shadow-[0_0_8px_#06b6d4]' : 'translate-x-1 shadow-md'}
+                  `}
+                />
+              </button>
+
               <a
                 href="#contact"
                 onClick={(e) => handleNav(e, '#contact')}
-                className="px-6 py-2 rounded-full bg-cyan-500 text-white text-[14px] font-bold no-underline"
+                className="px-6 py-2 rounded-full bg-cyan-500 text-white text-[14px] font-bold no-underline active:scale-95 transition-transform"
               >
                 Contact
               </a>

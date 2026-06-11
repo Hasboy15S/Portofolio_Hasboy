@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 // Ganti dengan import gambar kamu nanti:
-// import Profil2 from '../../assets/Profil2.jpg'
+import Profil2 from '../../assets/Profil2.jpg'
 // import reactIcon from '../../assets/REACT.png'
 // import arduinoIcon from '../../assets/ARDUINO.png'
 // dll...
@@ -56,8 +56,8 @@ export default function About() {
           
           <div className="relative aspect-square rounded-3xl bg-gray-100 dark:bg-[#151515] border border-black/10 dark:border-white/10 overflow-hidden flex items-center justify-center text-8xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
             {/* Swap emoji ini dengan foto aslimu: */}
-            {/* <img src={Profil2} alt="Hasbi" className="w-full h-full object-cover" /> */}
-            👨‍💻
+          <img src={Profil2} alt="Hasbi" className="w-full h-full object-cover" /> 
+          
           </div>
 
           {/* Badge Location - Desain diperbarui */}
@@ -108,7 +108,7 @@ export default function About() {
           </div>
 
           {/* Info cards */}
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {/* <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
             {INFO.map(({ label, value }) => (
               <div
                 key={label}
@@ -118,7 +118,7 @@ export default function About() {
                 <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 break-all group-hover:text-cyan-400 transition-colors">{value}</p>
               </div>
             ))}
-          </div>
+          </div>*/}
         </div>
       </div>
 

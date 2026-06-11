@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-
+import profilImg from '../../assets/Profil.png'
 const STATS = [
   { num: '5+', label: 'Projects' },
   { num: '9',  label: 'Technologies' },
@@ -145,11 +145,11 @@ export default function Hero() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] lg:w-[450px] lg:h-[450px] bg-cyan-500/20 dark:bg-cyan-500/10 blur-[80px] rounded-full pointer-events-none" />
           
           <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] rounded-full sm:rounded-[3rem] border border-black/5 dark:border-white/10 overflow-hidden shadow-2xl bg-gray-100 dark:bg-[#151515] group rotate-2 hover:rotate-0 transition-all duration-500 ease-out">
-            <img 
-              src="../src/assets/Profil.png" 
-              alt="Profile Muhammad Hasbi Takumi" 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
+            <img
+          src={profilImg} // Gunakan variabel yang di-import
+          alt="Profile Muhammad Hasbi Takumi"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
             
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
           </div>
