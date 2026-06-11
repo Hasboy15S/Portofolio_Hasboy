@@ -15,7 +15,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [progress, setProgress] = useState(0)
+  
   const menuRef = useRef()
+  const btnRef = useRef() // 1. Tambahin ref baru buat tombolnya
 
   useEffect(() => {
     const onScroll = () => {
@@ -36,9 +38,16 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // 2. Update logika klik di luarnya
   useEffect(() => {
     const handler = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) setMenuOpen(false)
+      // Hanya tutup menu JIKA klik BUKAN di dalam menu DAN BUKAN di tombol hamburger
+      if (
+        menuRef.current && !menuRef.current.contains(e.target) &&
+        btnRef.current && !btnRef.current.contains(e.target)
+      ) {
+        setMenuOpen(false)
+      }
     }
     document.addEventListener('mousedown', handler)
     return () => document.removeEventListener('mousedown', handler)
@@ -52,7 +61,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Scroll progress bar */}
       <div
         className="fixed top-0 left-0 h-[2px] z-50 transition-all duration-300"
         style={{ width: `${progress}%`, background: '#06b6d4', boxShadow: '0 0 10px #06b6d4' }} 
@@ -79,7 +87,6 @@ export default function Navbar() {
 
           {/* Logo */}
           <div className="flex items-center gap-1.5 shrink-0">
-            {/* Note: Path logo disesuaikan dengan standar Vite jika perlu (/logo.svg) */}
             <img src="/logo.svg" alt="Logo" className="w-8 h-5 rounded-full" />
             <span className={`text-[17px] font-bold tracking-tight select-none ${dark ? 'text-white' : 'text-slate-800'}`}>
               HAS<span className="text-cyan-500">BOY</span>
@@ -105,8 +112,6 @@ export default function Navbar() {
                     `}
                   >
                     {label}
-                    
-                    {/* Animated Underline */}
                     <span className={`
                       absolute -bottom-0 left-0 h-[3px] bg-cyan-500 rounded-full transition-all duration-300 ease-in-out
                       ${isActive ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-1/2 group-hover:opacity-50'}
@@ -121,8 +126,6 @@ export default function Navbar() {
 
           {/* Right */}
           <div className="flex items-center gap-1 shrink-0">
-            
-            {/* Modern Theme Switch Toggle (Desktop) */}
             <button
               onClick={() => setDark(!dark)}
               aria-label="Toggle theme"
@@ -131,11 +134,8 @@ export default function Navbar() {
                 ${dark ? 'bg-[#151515] border border-cyan-500/50 shadow-inner shadow-black' : 'bg-cyan-100 border border-cyan-200 shadow-inner'}
               `}
             >
-              {/* Ikon Background Switch */}
               <span className={`absolute left-1.5 text-[11px] transition-opacity duration-300 ${dark ? 'opacity-0' : 'opacity-100'}`}>☀️</span>
               <span className={`absolute right-1.5 text-[11px] transition-opacity duration-300 ${dark ? 'opacity-100' : 'opacity-0'}`}>🌙</span>
-              
-              {/* Bulatan (Thumb) yang geser */}
               <span
                 className={`
                   absolute w-5 h-5 rounded-full bg-white transition-transform duration-300 z-10
@@ -152,11 +152,12 @@ export default function Navbar() {
               Contact
             </a>
 
-            {/* Hamburger */}
+            {/* 3. Masukkan btnRef ke dalam tombol hamburger ini */}
             <button
+              ref={btnRef} 
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
-              className="md:hidden flex flex-col items-center justify-center w-8 h-8 gap-[5px] ml-1"
+              className="md:hidden flex flex-col items-center justify-center w-8 h-8 gap-[5px] ml-1 z-50 relative"
             >
               <span className={`block h-[2px] transition-all duration-300 ${dark ? 'bg-white/70' : 'bg-slate-800'} ${menuOpen ? 'w-5 rotate-45 translate-y-[7px]' : 'w-5'}`} />
               <span className={`block h-[2px] transition-all duration-300 ${dark ? 'bg-white/70' : 'bg-slate-800'} ${menuOpen ? 'opacity-0 w-0' : 'w-4'}`} />
@@ -196,7 +197,6 @@ export default function Navbar() {
                       }
                     `}
                   >
-                    {/* Active Indicator Mobile (Left Bar) */}
                     {isActive && (
                       <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1/2 bg-cyan-500 rounded-r-full" />
                     )}
@@ -206,12 +206,9 @@ export default function Navbar() {
               )
             })}
             
-            {/* Divider */}
             <div className={`my-3 h-[1px] w-full ${dark ? 'bg-white/10' : 'bg-cyan-900/10'}`} />
 
             <li className="flex items-center justify-between px-2 pt-1 pb-2">
-              
-              {/* Modern Theme Switch Toggle (Mobile) */}
               <button
                 onClick={() => setDark(!dark)}
                 aria-label="Toggle theme"
