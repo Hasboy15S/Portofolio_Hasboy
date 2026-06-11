@@ -1,12 +1,55 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-body {
-    height: 100vh;
-    background: #161513;
-    color: white;
-    font-family: 'outfit';
-    overflow-x: hidden;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Smooth scroll ──────────────────────────────── */
+html {
+  scroll-behavior: smooth;
 }
 
+/* ─── Base dark-mode default ─────────────────────── */
+html {
+  /* default dark, toggled by ThemeContext via .dark class */
+}
+
+/* ─── Fade-in entrance animation ─────────────────── */
+.hb-fade {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.hb-fade.hb-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Respect reduced-motion ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hb-fade {
+    transition: none;
+  }
+  .hb-fade,
+  .hb-fade.hb-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ─── Custom scrollbar ───────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #7c6ff7;
+  border-radius: 99px;
+}
+
+/* ─── Selection colour ───────────────────────────── */
+::selection {
+  background: rgba(124, 111, 247, 0.25);
+  color: inherit;
+}

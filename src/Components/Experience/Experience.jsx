@@ -1,99 +1,117 @@
-import React from 'react'
-import ScrollFloat from '../Effect/ScrollFloat'
-import './Experience.css'
-import { motion } from 'framer-motion'
- 
-// =============================================
-// ✏️  UBAH DATA DI SINI
-// - title    : judul pengalaman
-// - tag      : label kecil di atas judul (opsional, hapus baris jika tidak perlu)
-// - description : paragraf penjelasan
-// - image    : import gambar di atas, lalu masukkan variabelnya di sini
-// - reverse  : true = gambar di kanan, false = gambar di kiri
-// =============================================
- 
-import Pramuka from '../../assets/ORGANIZATION.png'
-import Ai from '../../assets/Ai.png'
- 
-const experiences = [
+import { useEffect, useRef } from 'react'
+
+// Untuk tambah/edit pengalaman, ubah array di bawah ini saja
+const EXPERIENCES = [
   {
     id: 1,
-    tag: 'Organization',
-    title: 'Leadership',
+    tag: 'Organization · Scouting',
+    title: 'Leadership & Teamwork',
     description:
-      'I have organizational experience in the Scouts, where I actively participated in various activities, teamwork, and leadership training. This helped me develop responsibility, discipline, and strong collaboration skills.',
-    image: Pramuka,
-    reverse: false,
+      'Actively participated in various activities, teamwork, and leadership training. Developed responsibility, discipline, and strong collaboration skills. Represented the team in multiple scouting competitions.',
+    year: '2021 – present',
+    icon: '🏕️',
   },
   {
     id: 2,
-    tag: 'Technology',
-    title: 'Artificial Intelligence',
+    tag: 'Technology · AI',
+    title: 'Artificial Intelligence Exploration',
     description:
-      'I explored AI tools and machine learning concepts through self-learning and projects. This sparked my passion for data-driven problem solving and building intelligent applications.',
-    image: Ai,
-    reverse: true,
+      'Explored AI tools and machine learning concepts through self-learning and hands-on projects. Sparked a passion for data-driven problem solving and building intelligent applications.',
+    year: '2023 – present',
+    icon: '🤖',
   },
-  // ➕ Tambah item baru di sini dengan format yang sama
+  {
+    id: 3,
+    tag: 'Creative · Media',
+    title: 'Video Editing & Graphic Design',
+    description:
+      'Foundational skills in video editing using Adobe tools and graphic design using Figma. Applied these skills in school projects and personal creative work to communicate ideas visually.',
+    year: '2022 – present',
+    icon: '🎨',
+  },
 ]
- 
-// =============================================
-// Jangan ubah bagian bawah ini
-// =============================================
- 
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 },
-}
- 
-function Experience() {
+
+function ExpCard({ tag, title, description, year, icon, delay }) {
+  const ref = useRef()
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => el.classList.add('hb-visible'), delay)
+        }
+      },
+      { threshold: 0.1 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [delay])
+
   return (
-    <section id="experience" className="experiences">
-      {/* Animated section title */}
-      <motion.div
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 1.5, ease: 'easeInOut', repeat: Infinity }}
-      >
-        <ScrollFloat
-          animationDuration={1}
-          ease="back.inOut(2)"
-          scrollStart="center bottom+=50%"
-          scrollEnd="bottom bottom-=40%"
-          stagger={0.02}
-        >
-          Experience
-        </ScrollFloat>
-      </motion.div>
- 
-      {/* Experience cards */}
-      <div className="experience">
-        {experiences.map((item, index) => (
-          <motion.div
-            key={item.id}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            exit="hidden"
-            transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.1 }}
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <div className={`experience-item${item.reverse ? ' experience-item--reverse' : ''}`}>
-              <img
-                className="experience-item__image"
-                src={item.image}
-                alt={item.title}
-              />
-              <div className="teks">
-                {item.tag && <span className="teks__tag">{item.tag}</span>}
-                <h2>{item.title}</h2>
-                <p>{item.description}</p>
+    <div ref={ref} className="hb-fade">
+      <div className="group relative pl-8 sm:pl-10">
+        {/* Timeline dot */}
+        <div className="absolute left-0 top-1 w-3 h-3 rounded-full bg-violet-500 ring-4 ring-white dark:ring-[#0a0a0f] z-10" />
+
+        {/* Card */}
+        <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#16161f] border border-black/[0.06] dark:border-white/[0.06] hover:border-violet-200 dark:hover:border-violet-500/30 transition-colors duration-200">
+          <div className="flex items-start justify-between gap-3 flex-wrap">
+            <div>
+              <p className="text-[10px] font-medium tracking-[1.5px] uppercase text-violet-500 mb-1">{tag}</p>
+              <div className="flex items-center gap-2">
+                <span className="text-xl">{icon}</span>
+                <h3 className="text-base font-medium text-gray-900 dark:text-white">{title}</h3>
               </div>
             </div>
-          </motion.div>
-        ))}
+            <span className="text-[11px] text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded-md shrink-0">
+              {year}
+            </span>
+          </div>
+          <p className="mt-3 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{description}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function Experience() {
+  const headRef = useRef()
+  useEffect(() => {
+    const el = headRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && el.classList.add('hb-visible'),
+      { threshold: 0.1 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <section
+      id="experience"
+      className="px-4 sm:px-6 py-20 max-w-5xl mx-auto"
+    >
+      {/* Header */}
+      <div ref={headRef} className="hb-fade mb-10">
+        <p className="text-xs font-medium tracking-[2px] uppercase text-violet-500 mb-3">Background</p>
+        <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-gray-900 dark:text-white">
+          Experience
+        </h2>
+      </div>
+
+      {/* Timeline */}
+      <div className="relative">
+        {/* Vertical line */}
+        <div className="absolute left-[5px] sm:left-[5px] top-2 bottom-2 w-px bg-gray-200 dark:bg-white/10" />
+
+        <div className="flex flex-col gap-5">
+          {EXPERIENCES.map((exp, i) => (
+            <ExpCard key={exp.id} {...exp} delay={i * 100} />
+          ))}
+        </div>
       </div>
     </section>
   )
 }
-
-export default Experience

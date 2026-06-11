@@ -1,34 +1,229 @@
-import React from 'react'
-import'./Navbar.css'
-import MENU from '../../assets/MENU.png'
-import CLOSE from '../../assets/CLOSE.png'
-import {useState, useRef} from 'react'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
-function Navbar(){
-  const menuRef = useRef();
-  const openMenu = () => {
-    menuRef.current.style.right="0";
+import { useState, useEffect, useRef } from 'react'
+import { useTheme } from '../../context/ThemeContext'
+
+const NAV_LINKS = [
+  { label: 'Home',       href: '#home' },
+  { label: 'About',      href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Portfolio',  href: '#portfolio' },
+  { label: 'Contact',    href: '#contact' },
+]
+
+export default function Navbar() {
+  const { dark, setDark } = useTheme()
+  const [active, setActive]     = useState('home')
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const menuRef = useRef()
+
+  useEffect(() => {
+    const onScroll = () => {
+      const st = window.scrollY
+      const sh = document.documentElement.scrollHeight - window.innerHeight
+      setProgress(sh > 0 ? (st / sh) * 100 : 0)
+      setScrolled(st > 60)
+
+      let current = NAV_LINKS[0].href.replace('#', '')
+      NAV_LINKS.forEach(({ href }) => {
+        const id = href.replace('#', '')
+        const el = document.getElementById(id)
+        if (el && el.getBoundingClientRect().top <= 80) current = id
+      })
+      setActive(current)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) setMenuOpen(false)
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
+  const handleNav = (e, href) => {
+    e.preventDefault()
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+    setMenuOpen(false)
   }
-  const closeMenu = () => {
-    menuRef.current.style.right="-400px";
-  }
+
   return (
-    <div className='navbar'>
-        <div className='logo'><h1>HAS</h1><h2>BOY</h2></div>
-        <img src={MENU} alt="" onClick={openMenu} className='nav-mob-open' />
-        <ul ref={menuRef} className="navmenu">
-            <img src={CLOSE} alt="" className='nav-mob-close' onClick={closeMenu} />
-            <li><AnchorLink className='anchor-link' offset={0} href='#home'><a href="" className='cursor-target'>Home</a></AnchorLink></li>
-            <li><AnchorLink className='anchor-link' offset={50} href='#about'><a href="" className='cursor-target'>About</a></AnchorLink></li>
-            <li><AnchorLink className='anchor-link' offset={50} href='#experience'><a href="" className='cursor-target'>Experience</a></AnchorLink></li>
-            <li><AnchorLink className='anchor-link' offset={50} href='#portofolio'><a href="" className='cursor-target'>Portofolio</a></AnchorLink></li>
-            <li><AnchorLink className='anchor-link' offset={50} href='#contact'><a href="" className='cursor-target'>Contact</a></AnchorLink></li>
-        </ul>
-        <div className="navconect">
-            <a href="">Connect with me?</a>
+    <>
+      {/* Scroll progress bar */}
+      <div
+        className="fixed top-0 left-0 h-[2px] z-50 transition-all duration-300"
+        style={{ width: `${progress}%`, background: '#06b6d4', boxShadow: '0 0 10px #06b6d4' }} 
+      />
+
+      <nav
+        className={`
+          fixed z-40 transition-all duration-500 ease-in-out backdrop-blur-xl
+          ${scrolled
+            ? `top-3 left-4 right-4 md:left-8 md:right-8 lg:left-16 lg:right-16 rounded-2xl border shadow-2xl ${
+                dark 
+                  ? 'border-white/10 bg-black/40 shadow-black/40' 
+                  : 'border-cyan-200/60 bg-cyan-50/70 shadow-cyan-900/10'
+              }`
+            : `top-0 left-0 right-0 rounded-none border-b ${
+                dark 
+                  ? 'border-white/[0.06] bg-black/30' 
+                  : 'border-cyan-200/60 bg-cyan-50/70'
+              }`
+          }
+        `}
+      >
+        <div className="max-w-7xl mx-auto px-5 h-[56px] flex items-center justify-between gap-6">
+
+          {/* Logo */}
+          <div className="flex items-center gap-1.5 shrink-0">
+            {/* Note: Path logo disesuaikan dengan standar Vite jika perlu (/logo.svg) */}
+            <img src="/logo.svg" alt="Logo" className="w-8 h-5 rounded-full" />
+            <span className={`text-[17px] font-bold tracking-tight select-none ${dark ? 'text-white' : 'text-slate-800'}`}>
+              HAS<span className="text-cyan-500">BOY</span>
+            </span>
+          </div>
+
+          {/* Center links */}
+          <ul className="hidden md:flex items-center list-none flex-1 justify-center gap-2">
+            {NAV_LINKS.map(({ label, href }) => {
+              const id = href.replace('#', '')
+              const isActive = active === id
+              return (
+                <li key={id} className="relative group">
+                  <a
+                    href={href}
+                    onClick={(e) => handleNav(e, href)}
+                    className={`
+                      relative px-4 py-2 text-[15px] font-semibold tracking-wide no-underline transition-all duration-300
+                      ${isActive 
+                        ? (dark ? 'text-white' : 'text-slate-900') 
+                        : (dark ? 'text-white/40 hover:text-white/90' : 'text-slate-400 hover:text-slate-800')
+                      }
+                    `}
+                  >
+                    {label}
+                    
+                    {/* Animated Underline */}
+                    <span className={`
+                      absolute -bottom-0 left-0 h-[3px] bg-cyan-500 rounded-full transition-all duration-300 ease-in-out
+                      ${isActive ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-1/2 group-hover:opacity-50'}
+                    `} 
+                    style={{ boxShadow: isActive ? '0 0 8px #06b6d4' : 'none' }}
+                    />
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+
+          {/* Right */}
+          <div className="flex items-center gap-1 shrink-0">
+            <button
+              onClick={() => setDark(!dark)}
+              aria-label="Toggle theme"
+              className={`hidden sm:flex items-center justify-center w-8 h-8 rounded transition-colors duration-150 text-sm ${
+                dark ? 'text-white/40 hover:text-white/80 hover:bg-white/5' : 'text-slate-400 hover:text-slate-800 hover:bg-slate-200/50'
+              }`}
+            >
+              {dark ? '☀️' : '🌙'}
+            </button>
+
+            <div className="hidden sm:flex items-center text-[13px] font-bold mr-2">
+              <button className="px-2 py-1 text-cyan-500 hover:text-cyan-400 transition-colors duration-150">EN</button>
+              <span className={`text-[11px] ${dark ? 'text-white/20' : 'text-slate-300'}`}>|</span>
+              <button className={`px-2 py-1 transition-colors duration-150 ${dark ? 'text-white/40 hover:text-white/80' : 'text-slate-500 hover:text-slate-800'}`}>ID</button>
+            </div>
+
+            <a
+              href="#contact"
+              onClick={(e) => handleNav(e, '#contact')}
+              className="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-cyan-500 hover:bg-cyan-600 active:scale-95 text-white text-[14px] font-bold tracking-wide no-underline transition-all duration-300 shadow-lg shadow-cyan-500/20"
+            >
+              Contact
+            </a>
+
+            {/* Hamburger */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+              className="md:hidden flex flex-col items-center justify-center w-8 h-8 gap-[5px] ml-1"
+            >
+              <span className={`block h-[2px] transition-all duration-300 ${dark ? 'bg-white/70' : 'bg-slate-800'} ${menuOpen ? 'w-5 rotate-45 translate-y-[7px]' : 'w-5'}`} />
+              <span className={`block h-[2px] transition-all duration-300 ${dark ? 'bg-white/70' : 'bg-slate-800'} ${menuOpen ? 'opacity-0 w-0' : 'w-4'}`} />
+              <span className={`block h-[2px] transition-all duration-300 ${dark ? 'bg-white/70' : 'bg-slate-800'} ${menuOpen ? 'w-5 -rotate-45 -translate-y-[7px]' : 'w-5'}`} />
+            </button>
+          </div>
         </div>
-    </div>
+
+        {/* Mobile drawer */}
+        <div
+          ref={menuRef}
+          className={`
+            md:hidden overflow-hidden transition-all duration-500 ease-in-out backdrop-blur-xl
+            ${scrolled ? 'rounded-b-2xl' : ''}
+            ${dark 
+              ? (scrolled ? 'bg-black/80' : 'bg-black/60') 
+              : 'bg-cyan-50/90'
+            }
+            border-t ${dark ? 'border-white/[0.06]' : 'border-cyan-200/60'}
+            ${menuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}
+          `}
+        >
+          <ul className="flex flex-col px-4 py-4 gap-1 list-none">
+            {NAV_LINKS.map(({ label, href }) => {
+              const id = href.replace('#', '')
+              const isActive = active === id
+              return (
+                <li key={id}>
+                  <a
+                    href={href}
+                    onClick={(e) => handleNav(e, href)}
+                    className={`
+                      relative block px-4 py-3 rounded-xl text-[15px] font-bold no-underline transition-all duration-300
+                      ${isActive 
+                        ? (dark ? 'text-white bg-cyan-500/10' : 'text-slate-900 bg-cyan-500/10') 
+                        : (dark ? 'text-white/50' : 'text-slate-500')
+                      }
+                    `}
+                  >
+                    {/* Active Indicator Mobile (Left Bar) */}
+                    {isActive && (
+                      <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1/2 bg-cyan-500 rounded-r-full" />
+                    )}
+                    {label}
+                  </a>
+                </li>
+              )
+            })}
+            
+            {/* Divider */}
+            <div className={`my-2 h-[1px] w-full ${dark ? 'bg-white/5' : 'bg-slate-200'}`} />
+
+            <li className="flex items-center justify-between px-2">
+              <div className="flex items-center gap-2">
+                <button onClick={() => setDark(!dark)} className={`w-10 h-10 flex items-center justify-center rounded-full ${dark ? 'bg-white/5 text-white/40' : 'bg-slate-100 text-slate-500'}`}>
+                  {dark ? '☀️' : '🌙'}
+                </button>
+                <div className="flex items-center font-bold text-[13px]">
+                   <span className="text-cyan-500 px-2">EN</span>
+                   <span className="opacity-20">|</span>
+                   <span className={`px-2 ${dark ? 'text-white/40' : 'text-slate-400'}`}>ID</span>
+                </div>
+              </div>
+              <a
+                href="#contact"
+                onClick={(e) => handleNav(e, '#contact')}
+                className="px-6 py-2 rounded-full bg-cyan-500 text-white text-[14px] font-bold no-underline"
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </>
   )
 }
-
-export default Navbar
