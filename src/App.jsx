@@ -1,11 +1,11 @@
 import { ThemeProvider } from './context/ThemeContext'
-import Navbar     from './components/Navbar/Navbar'
-import Hero       from './components/Hero/Hero'
-import About      from './components/About/About'
-import Experience from './components/Experience/Experience'
-import Portfolio  from './components/Portfolio/Portfolio'
-import Contact    from './components/Contact/Contact'
-import Footer     from './components/Footer/Footer'
+import Navbar     from './Components/Navbar/Navbar'
+import Hero       from './Components/Hero/Hero'
+import About      from './Components/About/About'
+import Experience from './Components/Experience/Experience'
+import Portfolio  from './Components/Portfolio/Portfolio'
+import Contact    from './Components/Contact/Contact'
+import Footer     from './Components/Footer/Footer'
 import './index.css'
 
 export default function App() {
