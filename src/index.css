@@ -53,3 +53,7 @@ html {
   background: rgba(124, 111, 247, 0.25);
   color: inherit;
 }
+/* Pastikan ini ada di index.css agar transisi font-size halus */
+.text-4xl, .text-xl {
+  transition: all 0.3s ease-in-out;
+}
