@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import profilImg from '../../assets/Profil.png'
+import { motion } from 'motion/react';
 const STATS = [
   { num: '5+', label: 'Projects' },
   { num: '9',  label: 'Technologies' },
@@ -101,12 +102,13 @@ export default function Hero() {
             Open to opportunities
           </div>
           {/* Ukuran Nama Dikecilkan: dari lg:text-7xl menjadi lg:text-6xl */}
-          <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-gray-900 dark:text-white leading-[1.1] mb-2">
-            Muhammad Hasbi Takumi.
-          </h1>
-          <h3 className="text-2xl sm:text-3xl lg:text-2xl font-medium text-gray-500 dark:text-gray-400 mt-2">
-            I build things for the <em className="not-italic text-cyan-500 font-bold">web.</em>
-          </h3>
+          <motion.h1 
+  layoutId="main-name"
+  className="text-4xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-gray-900 dark:text-white leading-[1.1] mb-2"
+  transition={{ type: "spring", stiffness: 40, damping: 15, duration: 1.2 }}
+>
+  Muhammad Hasbi Takumi.
+</motion.h1>
 
           <p className="mt-5 text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-xl leading-relaxed">
             Junior web developer & robotics enthusiast. Passionate about crafting clean, interactive
