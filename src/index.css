@@ -2,29 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Smooth scroll ──────────────────────────────── */
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-ink font-sans antialiased;
+  }
+
+  ::selection {
+    background: rgba(6, 182, 212, 0.18);
+  }
 }
 
-/* ─── Base dark-mode default ─────────────────────── */
-html {
-  /* default dark, toggled by ThemeContext via .dark class */
+/* ─── Custom scrollbar ────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0b1220;
 }
 
-/* ─── Fade-in entrance animation ─────────────────── */
+/* ─── Fade-in entrance ────────────────────────────── */
 .hb-fade {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.55s ease, transform 0.55s ease;
 }
-
 .hb-fade.hb-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ─── Respect reduced-motion ─────────────────────── */
+/* ─── Light float animation (chips / cards) ───────── */
+@keyframes hb-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.hb-float {
+  animation: hb-float 5s ease-in-out infinite;
+}
+
+/* ─── Respect reduced-motion ──────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .hb-fade {
     transition: none;
@@ -34,26 +62,14 @@ html {
     opacity: 1;
     transform: none;
   }
-}
-
-/* ─── Custom scrollbar ───────────────────────────── */
-::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #7c6ff7;
-  border-radius: 99px;
-}
-
-/* ─── Selection colour ───────────────────────────── */
-::selection {
-  background: rgba(124, 111, 247, 0.25);
-  color: inherit;
-}
-/* Pastikan ini ada di index.css agar transisi font-size halus */
-.text-4xl, .text-xl {
-  transition: all 0.3s ease-in-out;
+  .hb-float {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
