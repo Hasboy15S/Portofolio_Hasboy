@@ -93,7 +93,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="px-6 sm:px-10 lg:px-12 py-24 max-w-[1400px] w-full mx-auto"
+      className="px-6 sm:px-10 lg:px-12 py-12 md:py-24 max-w-[1400px] w-full mx-auto"
     >
       {/* Header */}
       <div ref={headRef} className="hb-fade mb-14">

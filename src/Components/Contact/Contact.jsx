@@ -30,11 +30,11 @@ export default function Contact() {
   const cardCls = 'group flex items-center gap-5 p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-300 no-underline'
 
   return (
-    <section id="contact" className="scroll-mt-20 px-6 sm:px-12 lg:px-24 pb-24">
+    <section id="contact" className="scroll-mt-20 px-6 sm:px-12 lg:px-24 pb-12 md:pb-24">
       {/* Dark block */}
       <div
         ref={sectionRef}
-        className="hb-fade relative max-w-[1400px] mx-auto rounded-3xl bg-slate-900 dark:bg-black/40 text-white overflow-hidden px-8 py-20 sm:px-16 sm:py-24 border border-slate-800 dark:border-white/10 shadow-2xl"
+        className="hb-fade relative max-w-[1400px] mx-auto rounded-3xl bg-slate-900 dark:bg-black/40 text-white overflow-hidden px-6 py-12 sm:px-16 sm:py-24 border border-slate-800 dark:border-white/10 shadow-2xl"
       >
         {/* Aksen biru halus di pojok */}
         <div aria-hidden className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-blue-600/20 blur-[100px] pointer-events-none" />

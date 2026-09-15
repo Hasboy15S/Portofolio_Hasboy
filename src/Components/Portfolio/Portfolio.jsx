@@ -181,7 +181,7 @@ export default function Portfolio() {
   const filtered = active === 'all' ? PROJECTS : PROJECTS.filter((p) => p.cat === active)
 
   return (
-    <section id="portfolio" className="scroll-mt-20 max-w-[1400px] mx-auto px-6 lg:px-12 py-24 relative">
+    <section id="portfolio" className="scroll-mt-20 max-w-[1400px] mx-auto px-6 lg:px-12 py-12 md:py-24 relative">
       {/* ── Grid Background (hanya untuk Portfolio) ── */}
       <div 
         className="absolute inset-0 pointer-events-none z-0 opacity-30 dark:opacity-[0.15]"

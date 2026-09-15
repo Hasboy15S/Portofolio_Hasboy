@@ -37,14 +37,14 @@ export default function Hero() {
       </div>
 
       {/* ── Main Content Container ── */}
-      <div className="relative z-20 w-full max-w-[1400px] mx-auto px-6 lg:px-12 h-[calc(100vh-6rem)] min-h-[700px] flex flex-col justify-between py-10">
+      <div className="relative z-20 w-full max-w-[1400px] mx-auto px-6 lg:px-12 pt-10 pb-20 lg:py-10">
         
-        {/* ── TOP ROW ── */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-start w-full gap-8">
-          
-          {/* Top Left */}
-          <div className="flex flex-col items-start gap-5">
-            <h2 className="text-6xl md:text-8xl lg:text-[9rem] font-black italic text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase">
+        {/* INNER WRAPPER FOR DESKTOP ABSOLUTE POSITIONING */}
+        <div className="relative w-full flex flex-col lg:block lg:h-[calc(100vh-12rem)] lg:min-h-[650px] gap-12 lg:gap-0">
+
+          {/* 1. TOP LEFT: I'M HASBI */}
+          <div className="lg:absolute lg:top-0 lg:left-0 flex flex-col items-center lg:items-start text-center lg:text-left gap-5 z-20">
+            <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] font-black italic text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase">
               I'M <br/>
               <span className="text-slate-800 dark:text-slate-100">HASBI</span>
             </h2>
@@ -57,10 +57,10 @@ export default function Hero() {
             </button>
           </div>
 
-          {/* Top Right */}
-          <div className="flex flex-col items-start lg:items-end gap-3 text-left lg:text-right max-w-[250px] pt-4">
+          {/* 2. TOP RIGHT: Follow Me */}
+          <div className="lg:absolute lg:top-0 lg:right-0 flex flex-col items-center lg:items-end text-center lg:text-right max-w-[250px] z-20 mx-auto lg:mx-0 pt-4 lg:pt-0">
             <h3 className="text-xl font-bold text-slate-900 dark:text-white">Follow Me</h3>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 mt-3">
               {[
                 { Icon: Github, href: 'https://github.com/Hasboy' },
                 { Icon: Linkedin, href: '#' },
@@ -72,47 +72,41 @@ export default function Hero() {
                 </a>
               ))}
             </div>
-            <p className="text-[15px] text-slate-600 dark:text-slate-400 mt-2 font-medium leading-snug">
+            <p className="text-[14px] lg:text-[15px] text-slate-600 dark:text-slate-400 mt-4 font-medium leading-snug">
               I design intuitive interface and develop user-centric web applications.
             </p>
           </div>
 
-        </div>
-
-        {/* ── BOTTOM ROW ── */}
-        <div className="flex flex-col-reverse lg:flex-row justify-between items-end w-full gap-8 pb-4 lg:pb-0">
-          
-          {/* Bottom Left */}
-          <div className="max-w-[340px]">
-            <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
-              Hello, I'm Muhammad Hasbi Takumi, a <span className="font-bold text-[#2563EB] dark:text-blue-400">Junior Web Developer</span> passionate about creating meaningful digital experiences.
-            </p>
+          {/* 3. CENTER IMAGE */}
+          <div className="relative lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 w-[85%] sm:w-[400px] lg:w-[600px] h-[400px] lg:h-[85%] z-10 flex justify-center items-end pointer-events-none mx-auto mt-4 lg:mt-0">
+            <img 
+              src={profilImg} 
+              alt="Muhammad Hasbi Takumi" 
+              className="w-full h-full object-cover object-top rounded-t-[4rem] lg:rounded-t-[8rem]"
+              style={{
+                WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 20%)',
+                maskImage: 'linear-gradient(to top, transparent 0%, black 20%)'
+              }}
+            />
           </div>
 
-          {/* Bottom Right */}
-          <div className="text-left lg:text-right mb-4 lg:mb-0">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 dark:text-white leading-[0.95] tracking-tighter uppercase">
+          {/* 4. BOTTOM RIGHT: JUNIOR WEB DEVELOPER */}
+          <div className="lg:absolute lg:bottom-0 lg:right-0 flex flex-col items-center lg:items-end text-center lg:text-right z-20">
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black text-slate-900 dark:text-white leading-[0.95] tracking-tighter uppercase">
               JUNIOR <br/>
               WEB <br/>
               DEVELOPER
             </h2>
           </div>
 
+          {/* 5. BOTTOM LEFT: Hello, I'm... */}
+          <div className="lg:absolute lg:bottom-0 lg:left-0 max-w-[340px] text-center lg:text-left z-20 mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg lg:text-xl text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+              Hello, I'm Muhammad Hasbi Takumi, a <span className="font-bold text-[#2563EB] dark:text-blue-400">Junior Web Developer</span> passionate about creating meaningful digital experiences.
+            </p>
+          </div>
+
         </div>
-
-      </div>
-
-      {/* ── CENTER IMAGE ── */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] sm:w-[450px] lg:w-[600px] h-[60%] lg:h-[85%] z-10 flex justify-center items-end pointer-events-none">
-         <img 
-            src={profilImg} 
-            alt="Muhammad Hasbi Takumi" 
-            className="w-full h-full object-cover object-top rounded-t-[4rem] lg:rounded-t-[8rem]"
-            style={{
-               WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 20%)',
-               maskImage: 'linear-gradient(to top, transparent 0%, black 20%)'
-            }}
-         />
       </div>
 
     </section>
