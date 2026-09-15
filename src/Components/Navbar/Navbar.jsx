@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Sun, Moon } from 'lucide-react'
+import { useTheme } from '../../context/ThemeContext'
 
 const NAV_LINKS = [
   { label: 'Beranda', href: '#home' },
@@ -11,6 +12,7 @@ const NAV_LINKS = [
 ]
 
 export default function Navbar() {
+  const { dark, setDark } = useTheme()
   const [active, setActive]     = useState('home')
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -109,8 +111,16 @@ export default function Navbar() {
             })}
           </ul>
 
-          {/* CTA + hamburger */}
+          {/* CTA + Theme + hamburger */}
           <div className="flex items-center gap-4 shrink-0">
+            <button
+              onClick={() => setDark(!dark)}
+              className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {dark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+
             <a
               href="#contact"
               onClick={(e) => handleNav(e, '#contact')}
