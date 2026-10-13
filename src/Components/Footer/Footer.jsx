@@ -64,9 +64,17 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-slate-200 dark:border-white/5">
-        <p className="max-w-[1400px] mx-auto px-6 lg:px-12 py-6 text-center md:text-left text-xs text-slate-500 dark:text-slate-400 font-medium">
-          © {new Date().getFullYear()} Muhammad Hasbi Takumi · Dibangun dengan React &amp; Tailwind CSS
-        </p>
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 dark:text-slate-400 font-medium">
+          <p className="text-center sm:text-left m-0">
+            © {new Date().getFullYear()} Muhammad Hasbi Takumi · Dibangun dengan React &amp; Tailwind CSS
+          </p>
+          <a
+            href="/privacy"
+            className="hover:text-[#2563EB] dark:hover:text-blue-400 transition-colors duration-200 underline sm:no-underline"
+          >
+            Privacy Policy
+          </a>
+        </div>
       </div>
     </footer>
   )

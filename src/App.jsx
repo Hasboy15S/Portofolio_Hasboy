@@ -10,9 +10,31 @@ import Contact       from './Components/Contact/Contact'
 import Footer        from './Components/Footer/Footer'
 import BackToTop     from './Components/BackToTop/BackToTop'
 import SmoothScroll  from './Components/SmoothScroll/SmoothScroll'
+import Privacy       from './Components/Privacy/Privacy'
 import './index.css'
 
 export default function App() {
+  const [currentPath, setCurrentPath] = useState(() => 
+    typeof window !== 'undefined' ? window.location.pathname.toLowerCase() : '/'
+  )
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname.toLowerCase())
+    }
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  const isPrivacyPage =
+    currentPath === '/privacy' ||
+    currentPath === '/privacy/' ||
+    currentPath === '/privacy.html'
+
+  if (isPrivacyPage) {
+    return <Privacy />
+  }
+
   const heroRef = useRef(null)
   const animationRef = useRef(null)
   const [heroHeight, setHeroHeight] = useState(800)
